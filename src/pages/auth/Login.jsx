@@ -64,6 +64,7 @@ const Login = () => {
             onchange={handleChange}
             placeholder='Enter Email'
             error={errors.email}
+            className='py-4'
           />
           <AbInputField
             label='Password'
@@ -73,6 +74,7 @@ const Login = () => {
             onchange={handleChange}
             placeholder='Enter password'
             error={errors.password}
+            className='py-4'
           />
           <AbButton
             text='Login'

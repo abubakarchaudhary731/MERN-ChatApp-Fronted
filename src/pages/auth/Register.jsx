@@ -71,6 +71,7 @@ const Register = () => {
                             onchange={handleChange}
                             placeholder='Enter Name'
                             error={errors.name}
+                            className='py-4'
                         />
                         <AbInputField
                             label='Email'
@@ -80,6 +81,7 @@ const Register = () => {
                             onchange={handleChange}
                             placeholder='Enter Email'
                             error={errors.email}
+                            className='py-4'
                         />
                     </div>
                     <AbInputField
@@ -90,6 +92,7 @@ const Register = () => {
                         onchange={handleChange}
                         placeholder='Enter password'
                         error={errors.password}
+                        className='py-4'
                     />
                     <AbButton
                         text='Register'

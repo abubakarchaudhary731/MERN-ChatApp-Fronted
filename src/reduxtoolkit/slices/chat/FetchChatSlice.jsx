@@ -62,7 +62,11 @@ export const fetchChats = createAsyncThunk("fetchChats", async () => {
 const FetchChatSlice = createSlice({
     name: "FetchChatSlice",
     initialState,
-    reducers: {},
+    reducers: {
+        emptySearchUser: (state) => {
+            state.searchUsers = [];
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchChats.pending, (state) => {
@@ -108,4 +112,5 @@ const FetchChatSlice = createSlice({
     },
 });
 
+export const { emptySearchUser } = FetchChatSlice.actions;
 export default FetchChatSlice.reducer;

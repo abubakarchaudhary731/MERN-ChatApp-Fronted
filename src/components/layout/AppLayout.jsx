@@ -15,7 +15,7 @@ const AppLayout = ({ children, header }) => {
     const handleNotificationClose = () => {
         dispatch(resetNotificationData());
     };
-console.log(notificationData);
+
     return (
         <>
             {snackbarData && (

@@ -8,8 +8,7 @@ import ChatSection from '../components/Shared/ChatSection';
 import Profile from './Profile';
 import { fetchMessages } from '../reduxtoolkit/slices/chat/MessageSlice';
 import io from 'socket.io-client';
-import { addNotificationData, addSnackbarData } from '../reduxtoolkit/slices/SnakbarMessageSlice';
-import AbNotifications from '../components/inputfields/AbNotification';
+import { addNotificationData } from '../reduxtoolkit/slices/SnakbarMessageSlice';
 
 const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
@@ -94,7 +93,7 @@ const Home = () => {
     socket.on("connected", () => {
       console.log("connected");
     });
-  }, [token]);
+  }, [user]);
 
   // Handle receiving messages via socket
   useEffect(() => {
