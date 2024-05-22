@@ -29,7 +29,6 @@ export const searchUser = createAsyncThunk("searchUser", async (data) => {
 
 // ******************** Start Chat To New User ******************** //
 export const startChat = createAsyncThunk("startChat", async (data) => {
-    console.log(data);
     const token = Store.getState().LoginUser.token;
     try {
         const response = await axios.post("http://localhost:5000/api/chat", data, {

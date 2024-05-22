@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 let initialState = {
     snackbarData: null,
+    notificationData: null
 };
 
 const SnakMessageSlice = createSlice({
@@ -14,9 +15,15 @@ const SnakMessageSlice = createSlice({
         resetSnackbar: (state) => {
             state.snackbarData = null;
         },
+        addNotificationData: (state, action) => {
+            state.notificationData = action.payload;
+        },
+        resetNotificationData: (state) => {
+            state.notificationData = null;
+        },
     },
 
 });
 
-export const { addSnackbarData, resetSnackbar } = SnakMessageSlice.actions;
+export const { addSnackbarData, resetSnackbar, addNotificationData, resetNotificationData } = SnakMessageSlice.actions;
 export default SnakMessageSlice.reducer;

@@ -1,15 +1,21 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { resetSnackbar } from '../../reduxtoolkit/slices/SnakbarMessageSlice';
+import { resetNotificationData, resetSnackbar } from '../../reduxtoolkit/slices/SnakbarMessageSlice';
 import AbSnackbar from '../inputfields/AbSnakbar';
+import AbNotifications from '../inputfields/AbNotification';
 
 const AppLayout = ({ children, header }) => {
-    const { snackbarData } = useSelector((state) => state.SnakMessages);
+    const { snackbarData, notificationData } = useSelector((state) => state.SnakMessages);
     const dispatch = useDispatch();
 
     const handleClose = () => {
         dispatch(resetSnackbar());
     };
+
+    const handleNotificationClose = () => {
+        dispatch(resetNotificationData());
+    };
+console.log(notificationData);
     return (
         <>
             {snackbarData && (
@@ -20,6 +26,15 @@ const AppLayout = ({ children, header }) => {
                     variant={snackbarData.variant}
                 />
             )}
+            {notificationData && (
+                <AbNotifications
+                    open={true}
+                    handleClose={handleNotificationClose}
+                    userName={notificationData?.userName}
+                    message={notificationData?.message}
+                />
+            )}
+
             <div className='h-screen'>
                 {
                     header && (

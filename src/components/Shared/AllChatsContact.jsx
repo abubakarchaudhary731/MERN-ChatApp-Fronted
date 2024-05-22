@@ -53,7 +53,7 @@ const AllChatsContact = ({
     // **************** Handle Filter Single Chat User Name **************** //
     const { user } = useSelector((state) => state.LoginUser);
     const getSenderName = (data) => {
-        return data?.[0]._id === user.id ? data?.[0].name : data?.[1].name;
+        return data?.[0]._id === user._id ? data?.[1].name : data?.[0].name;
     }
 
     // **************** Handle Start Chat To New User **************** //

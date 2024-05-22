@@ -5,6 +5,7 @@ import SnakbarMessageSlice from './slices/SnakbarMessageSlice';
 import LoginSlice from './slices/auth/LoginSlice';
 import RegisterSlice from './slices/auth/RegisterSlice';
 import FetchChatSlice from './slices/chat/FetchChatSlice';
+import MessageSlice from './slices/chat/MessageSlice';
 
 const persistConfig = {
   key: 'root',
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   LoginUser: LoginSlice,
   RegisterUser: RegisterSlice,
   Chats: FetchChatSlice,
+  Message: MessageSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
