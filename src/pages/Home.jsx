@@ -101,8 +101,10 @@ const Home = () => {
       if (!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id) {
         // Give Notification
         dispatch(addNotificationData({ message: newMessageReceived.content, userName: newMessageReceived?.sender?.name }));
+        dispatch(fetchChats());
       } else {
         setMessages((prevMessages) => [...prevMessages, newMessageReceived]);
+        dispatch(fetchChats());
       }
     });
 

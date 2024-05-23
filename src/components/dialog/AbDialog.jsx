@@ -82,7 +82,7 @@ export default function AbDialog({
                     </DialogActions>
                 }
             </BootstrapDialog>
-            <style jsx>
+            <style jsx='true'>
                 {`
                   .custom-dialog-paper {
                     min-width: 500px;

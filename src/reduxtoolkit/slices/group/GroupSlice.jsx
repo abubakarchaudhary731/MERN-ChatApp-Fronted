@@ -23,22 +23,50 @@ export const createGroup = createAsyncThunk("createGroup", async (data) => {
     }
 });
 
-// ******************** Fetch Chats ******************** //
-// export const fetchChats = createAsyncThunk("fetchChats", async () => {
-//     const token = Store.getState().LoginUser.token;
-//     try {
-//         const response = await axios.get("http://localhost:5000/api/chat", {
-//             headers: {
-//                 Authorization: `Bearer ${token}`,
-//             },
-//         });
+// ******************** Update Group Name ******************** //
+export const updateGroupName = createAsyncThunk("updateGroupName", async (data) => {
+    const token = Store.getState().LoginUser.token;
+    try {
+        const response = await axios.put("http://localhost:5000/api/chat/rename", data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+});
 
-//         return response.data;
+// ******************** Add User To Group ******************** //
+export const addUserToGroup = createAsyncThunk("addUserToGroup", async (data) => {
+    const token = Store.getState().LoginUser.token;
+    try {
+        const response = await axios.put("http://localhost:5000/api/chat/groupadd", data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+});
 
-//     } catch (error) {
-//         return error;
-//     }
-// });
+// ******************** Remove User To Group ******************** //
+export const removeUserFromGroup = createAsyncThunk("removeUserFromGroup", async (data) => {
+    const token = Store.getState().LoginUser.token;
+    try {
+        const response = await axios.put("http://localhost:5000/api/chat/groupremove", data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+});
 
 const GroupSlice = createSlice({
     name: "GroupSlice",
@@ -59,6 +87,48 @@ const GroupSlice = createSlice({
                 state.message = action.payload;
             })
             .addCase(createGroup.rejected, (state, action) => {
+                state.loading = false;
+                state.errors = action.payload.error;
+            })
+
+            // ******************** Update Group Name ******************** //
+            .addCase(updateGroupName.pending, (state) => {
+                state.loading = true;
+                state.errors = null;
+            })
+            .addCase(updateGroupName.fulfilled, (state, action) => {
+                state.loading = false;
+                state.message = action.payload;
+            })
+            .addCase(updateGroupName.rejected, (state, action) => {
+                state.loading = false;
+                state.errors = action.payload.error;
+            })
+
+            // ******************** Add User To Group ******************** //
+            .addCase(addUserToGroup.pending, (state) => {
+                state.loading = true;
+                state.errors = null;
+            })
+            .addCase(addUserToGroup.fulfilled, (state, action) => {
+                state.loading = false;
+                state.message = action.payload;
+            })
+            .addCase(addUserToGroup.rejected, (state, action) => {
+                state.loading = false;
+                state.errors = action.payload.error;
+            })
+
+            // ******************** Remove User To Group ******************** //
+            .addCase(removeUserFromGroup.pending, (state) => {
+                state.loading = true;
+                state.errors = null;
+            })
+            .addCase(removeUserFromGroup.fulfilled, (state, action) => {
+                state.loading = false;
+                state.message = action.payload;
+            })
+            .addCase(removeUserFromGroup.rejected, (state, action) => {
                 state.loading = false;
                 state.errors = action.payload.error;
             })

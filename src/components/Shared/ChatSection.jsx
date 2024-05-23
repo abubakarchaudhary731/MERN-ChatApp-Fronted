@@ -3,6 +3,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMessages, sendMessage } from '../../reduxtoolkit/slices/chat/MessageSlice';
 import ChatSectionHeader from './ChatSectionHeader';
+import { fetchChats } from '../../reduxtoolkit/slices/chat/FetchChatSlice';
 
 const ChatSection = ({
     selectedChat,
@@ -33,6 +34,7 @@ const ChatSection = ({
             dispatch(sendMessage({ chatId: selectedChat?._id, content: content.trim() })).then((result) => {
                 if (result.payload.content) {
                     dispatch(fetchMessages(selectedChat?._id));
+                    dispatch(fetchChats());
                     setContent('');
                     scrollToBottom();
                     socket.emit("new message", result.payload);
@@ -47,7 +49,7 @@ const ChatSection = ({
                 selectedChat ? (
                     <>
                         {/* Header */}
-                        <ChatSectionHeader 
+                        <ChatSectionHeader
                             selectedChat={selectedChat}
                             setSelectedChat={setSelectedChat}
                             user={user}
@@ -69,6 +71,7 @@ const ChatSection = ({
                                         className={`mb-2 p-2 rounded-lg w-fit max-w-[75%] ${message.sender._id === user?._id ? 'bg-chatMsg self-end' : 'bg-chatheader self-start'
                                             }`}
                                     >
+                                        {message.chat?.isGroupChat === true && message.sender._id !== user?._id ? <p className='text-sm text-primary'>~{message?.sender?.name}</p> : null}
                                         <p className='break-words'>{message.content}</p>
                                     </div>
                                 ))}
