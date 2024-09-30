@@ -13,7 +13,7 @@ let initialState = {
 export const sendMessage = createAsyncThunk("sendMessage", async (data) => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.post("http://localhost:5000/api/message", data, {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/message`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -28,7 +28,7 @@ export const sendMessage = createAsyncThunk("sendMessage", async (data) => {
 export const fetchMessages = createAsyncThunk("fetchMessages", async (chatId) => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.get(`http://localhost:5000/api/message/${chatId}`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/message/${chatId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

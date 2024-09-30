@@ -12,7 +12,7 @@ let initialState = {
 export const createGroup = createAsyncThunk("createGroup", async (data) => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.post("http://localhost:5000/api/chat/group", data, {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/chat/group`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -27,7 +27,7 @@ export const createGroup = createAsyncThunk("createGroup", async (data) => {
 export const updateGroupName = createAsyncThunk("updateGroupName", async (data) => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.put("http://localhost:5000/api/chat/rename", data, {
+        const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/chat/rename`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -42,7 +42,7 @@ export const updateGroupName = createAsyncThunk("updateGroupName", async (data) 
 export const addUserToGroup = createAsyncThunk("addUserToGroup", async (data) => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.put("http://localhost:5000/api/chat/groupadd", data, {
+        const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/chat/groupadd`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -57,7 +57,7 @@ export const addUserToGroup = createAsyncThunk("addUserToGroup", async (data) =>
 export const removeUserFromGroup = createAsyncThunk("removeUserFromGroup", async (data) => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.put("http://localhost:5000/api/chat/groupremove", data, {
+        const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/chat/groupremove`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

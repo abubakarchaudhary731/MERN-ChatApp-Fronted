@@ -9,7 +9,7 @@ const initialState = {
 
 export const registerUser = createAsyncThunk("register", async (data) => {
   try {
-    const response = await axios.post(`http://localhost:5000/api/user/register`, data, {
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/user/register`, data, {
       headers: {
         accept: "application/json",
         "Content-Type": "application/json",

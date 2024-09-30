@@ -14,7 +14,7 @@ let initialState = {
 export const searchUser = createAsyncThunk("searchUser", async (data) => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.get(`http://localhost:5000/api/user?search=${data}`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/user?search=${data}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -31,7 +31,7 @@ export const searchUser = createAsyncThunk("searchUser", async (data) => {
 export const startChat = createAsyncThunk("startChat", async (data) => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.post("http://localhost:5000/api/chat", data, {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/chat`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -46,7 +46,7 @@ export const startChat = createAsyncThunk("startChat", async (data) => {
 export const fetchChats = createAsyncThunk("fetchChats", async () => {
     const token = Store.getState().LoginUser.token;
     try {
-        const response = await axios.get("http://localhost:5000/api/chat", {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/chat`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
