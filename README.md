@@ -1,8 +1,44 @@
-# React + Vite
+# Full-Stack Ecommerce Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a real-time chat application built using the MERN stack (MongoDB, Express, React, and Node.js). The application allows users to communicate with each other in real-time via text messages in a modern and responsive interface. It supports multiple chat rooms, user authentication, and offers a seamless chat experience with instant message updates.
+Here the Backend Link:
+[MERN-ChatApp-Backend](https://github.com/abubakarchaudhary731/MERN-ChatApp-Backend).
 
-Currently, two official plugins are available:
+### Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you begin, make sure you have Node.js 18 installed on your machine. You can download it from [here](https://nodejs.org/).
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+   git@github.com:abubakarchaudhary731/MERN-ChatApp-Fronted.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd MERN-ChatApp-Fronted
+    ```
+
+3. Install the dependencies:
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+### Running the Development Server
+
+To start the development server, run one of the following commands:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
